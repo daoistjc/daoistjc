@@ -53,3 +53,26 @@
 
 </body>
 </html>
+
+const API_KEY = "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";
+const API_URL = "https://api.openai.com/v1/images/generations";
+
+async function generateImage(prompt) {
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${API_KEY}`
+            },
+            body: JSON.stringify({
+                prompt: prompt,
+                model: "image-alpha-001"
+            })
+        });
+        const json = await response.json();
+        return json.data.url;
+    } catch (error) {
+        console.error(error);
+    }
+}
