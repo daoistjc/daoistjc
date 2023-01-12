@@ -1,0 +1,45 @@
+  <head>
+    <title>Crypto Pop Culture Concierge</title>
+    <style>
+      body {
+        background-color: #5AD769;
+        font-size: 20px;
+        text-align: center;
+      }
+      #question-form {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Crypto Pop Culture Concierge</h1>
+    <form>
+      <label for="question">Ask a question:</label>
+      <input type="text" id="question" name="question">
+      <button type="button" onclick="submitQuestion()">Submit</button>
+    </form>
+    <div id="answer"></div>
+    <div>
+     App powered by 
+      <a href="https://twitter.com/zetablockchain" target="_blank">ZetaChain</a>
+    </div>
+    <script>
+      function submitQuestion() {
+        // Get the question from the input field
+        var question = document.getElementById("question").value;
+
+        // Send the question to the AI for answering
+        // The answer will be returned and displayed on the page
+        fetch('/answer', {
+          method: 'POST',
+          body: JSON.stringify({ question: question }),
+          headers: { 'Content-Type': 'application/json' },
+        })
+          .then((response) => response.text())
+          .then((answer) => {
+            document.getElementById('answer').innerHTML = answer;
+          });
+      }
+    </script>
+  </body>
+</html>
