@@ -54,3 +54,69 @@
           .then((response) => response.json())
           .then((json) => {
             var imageUrl =
+                
+                
+                
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>First-ever AI Omnichain NFT Generator</title>
+    <style>
+      body {
+        background-color: #5AD769;
+        text-align: center;
+      }
+      h1 {
+        font-size: 48px;
+      }
+      p {
+        font-size: 24px;
+        line-height: 32px;
+      }
+      #question-form {
+        display: inline-block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>First-ever AI Omnichain NFT Generator</h1>
+    <p>Generate and mint your NFT on a smart contract, which can facilitate cross-chain ownership transfer🤯</p>
+    <form>
+      <label for="question">What is the subject of your NFT?</label>
+      <input type="text" id="question" name="question">
+      <button type="button" onclick="submitQuestion()">Submit</button>
+    </form>
+    <div id="answer"></div>
+    <div style="margin-top: 32px;">
+     App powered by <a href="https://twitter.com/zetablockchain" target="_blank">ZetaChain</a>
+    </div>
+    <script>
+      function submitQuestion() {
+        // Get the question from the input field
+        var question = document.getElementById("question").value;
+
+        // Add your API key here
+        var apiKey = "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";
+
+        // Send the question to the AI for generating an image
+        fetch(`https://api.openai.com/v1/images/generations`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            prompt: question,
+            model: 'image-alpha-001'
+          })
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            var imageUrl = json;
+            console.log(imageUrl)
+          })
+      }
+    </script>
+  </body>
+</html>
