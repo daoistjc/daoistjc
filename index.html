@@ -1,10 +1,18 @@
+<!DOCTYPE html>
+<html>
   <head>
-    <title>Crypto Pop Culture Concierge</title>
+    <title>First-ever AI Omnichain NFT Generator</title>
     <style>
       body {
         background-color: #5AD769;
-        font-size: 20px;
         text-align: center;
+      }
+      h1 {
+        font-size: 48px;
+      }
+      p {
+        font-size: 24px;
+        line-height: 32px;
       }
       #question-form {
         display: inline-block;
@@ -12,34 +20,36 @@
     </style>
   </head>
   <body>
-    <h1>Crypto Pop Culture Concierge</h1>
+    <h1>First-ever AI Omnichain NFT Generator</h1>
+    <p>Generate and mint your NFT on a smart contract, which can facilitate cross-chain ownership transfer🤯</p>
     <form>
-      <label for="question">Ask a question:</label>
+      <label for="question">What is the subject of your NFT?</label>
       <input type="text" id="question" name="question">
       <button type="button" onclick="submitQuestion()">Submit</button>
     </form>
     <div id="answer"></div>
-    <div>
-     App powered by 
-      <a href="https://twitter.com/zetablockchain" target="_blank">ZetaChain</a>
+    <div style="margin-top: 32px;">
+     App powered by <a href="https://twitter.com/zetablockchain" target="_blank">ZetaChain</a>
     </div>
     <script>
       function submitQuestion() {
         // Get the question from the input field
         var question = document.getElementById("question").value;
 
-        // Send the question to the AI for answering
-        // The answer will be returned and displayed on the page
-        fetch('/answer', {
-          method: 'POST',
-          body: JSON.stringify({ question: question }),
-          headers: { 'Content-Type': 'application/json' },
-        })
-          .then((response) => response.text())
-          .then((answer) => {
-            document.getElementById('answer').innerHTML = answer;
-          });
-      }
-    </script>
-  </body>
+    // Send the question to the AI for answering
+    // The answer will be returned and displayed on the page
+    fetch('/answer', {
+      method: 'POST',
+      body: JSON.stringify({ question: question }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((response) => response.text())
+      .then((answer) => {
+        document.getElementById('answer').innerHTML = answer;
+      });
+  }
+</script>
+
+
+</body>
 </html>
