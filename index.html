@@ -35,21 +35,22 @@
       function submitQuestion() {
         // Get the question from the input field
         var question = document.getElementById("question").value;
-
-    // Send the question to the AI for answering
-    // The answer will be returned and displayed on the page
-    fetch('/answer', {
-      method: 'POST',
-      body: JSON.stringify({ question: question }),
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then((response) => response.text())
-      .then((answer) => {
-        document.getElementById('answer').innerHTML = answer;
-      });
-  }
-</script>
-
-
-</body>
-</html>
+        
+        // Add your API key here 
+        var apiKey = "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";
+        
+        // Send the question to the AI for generating an image
+        fetch(`https://api.openai.com/v1/images/generations`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
+          body: JSON.stringify({
+            prompt: question,
+            model: 'image-alpha-001'
+          })
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            var imageUrl =
