@@ -6,65 +6,7 @@
       body {
         background-color: #5AD769;
         text-align: center;
-      }
-      h1 {
-        font-size: 48px;
-      }
-      p {
-        font-size: 24px;
-        line-height: 32px;
-      }
-      #question-form {
-        display: inline-block;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>First-ever AI Omnichain NFT Generator</h1>
-    <p>Generate and mint your NFT on a smart contract, which can facilitate cross-chain ownership transfer🤯</p>
-    <form>
-      <label for="question">What is the subject of your NFT?</label>
-      <input type="text" id="question" name="question">
-      <button type="button" onclick="submitQuestion()">Submit</button>
-    </form>
-    <div id="answer"></div>
-    <div style="margin-top: 32px;">
-     App powered by <a href="https://twitter.com/zetablockchain" target="_blank">ZetaChain</a>
-    </div>
-    <script>
-      function submitQuestion() {
-        // Get the question from the input field
-        var question = document.getElementById("question").value;
-        
-        // Add your API key here 
-        var apiKey = "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";
-        
-        // Send the question to the AI for generating an image
-        fetch(`https://api.openai.com/v1/images/generations`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-          },
-          body: JSON.stringify({
-            prompt: question,
-            model: 'image-alpha-001'
-          })
-        })
-          .then((response) => response.json())
-          .then((json) => {
-            var imageUrl =
-                
-                
-                
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>First-ever AI Omnichain NFT Generator</title>
-    <style>
-      body {
-        background-color: #5AD769;
-        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
       }
       h1 {
         font-size: 48px;
@@ -81,7 +23,7 @@
 
   <body>
     <h1>First-ever AI Omnichain NFT Generator</h1>
-    <p>Generate and mint your NFT on a smart contract, which can facilitate cross-chain ownership transfer🤯</p>
+    <p>Generate and mint your NFT on a smart contract, which can facilitate cross-chain ownership transfer 🤯</p>
     <form>
       <label for="question">What is the subject of your NFT?</label>
       <input type="text" id="question" name="question">
@@ -91,13 +33,16 @@
     <div style="margin-top: 32px;">
      App powered by <a href="https://twitter.com/zetablockchain" target="_blank">ZetaChain</a>
     </div>
+
+    <img id="nft-image" style="height: 400px; width: 400px; object-fit: cover; margin-top: 30px; border-radius: 10px; border: 2px solid white; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" alt="">
+
     <script>
       function submitQuestion() {
         // Get the question from the input field
         var question = document.getElementById("question").value;
 
         // Add your API key here
-        var apiKey = "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";
+        var apiKey = "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";
 
         // Send the question to the AI for generating an image
         fetch(`https://api.openai.com/v1/images/generations`, {
@@ -114,7 +59,10 @@
           .then((response) => response.json())
           .then((json) => {
             var imageUrl = json;
-            console.log(imageUrl)
+
+            console.log({ imageUrl })
+
+            document.getElementById("nft-image").src = imageUrl
           })
       }
     </script>
